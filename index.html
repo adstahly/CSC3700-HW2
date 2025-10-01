@@ -8,68 +8,54 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body class="d-flex flex-column vh-100">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="imgs/Movie_Logo.jpg" alt="Movies Logo" width="30" height="24"
-                 class="d-inline-block align-text-top">
-            Greatest Movies
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="moviesHW.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="movie_details.html?id=4">Top Rated</a>
-                </li>
-                <li>
-                    <a class="nav-link" href="moviesHW.html">Latest</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<main class="flex-grow-1">
-    <h1>Greatest Movies of All Time</h1>
+<body>
+
+<main>
 
     <div class="container">
-        <button id="toggleFormButton" class="btn btn-success my-3">Add Sample Movie</button>
         <div id="add-movie-div">
             <form id="addMovieForm">
-                <h3> Add Sample Movie</h3>
-                <div class="mb-3"><label for="movieId">ID:</label>
-                    <input type="number" id="movieId" min="8" class="form-control" required>
-                </div>
-                <div class="mb-3"><label for="movieTitle" class="form-label">Title: </label>
+                <h3> Add New Movie</h3>
+                <div class="mb-3 col-md-12">
+                    <div class="row">
+                    <div class="col-md-8"><label for="movieTitle" class="form-label">Title: *</label>
                     <input type="text" id="movieTitle" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="movieYear">Release Year: *</label>
+                        <input type="number" id="movieYear" class="form-control" required>
+                    </div>
+                    </div>
                 </div>
-                <div class="mb-3"><label for="movieDescription">Description: </label>
+                <div class="mb-3"><label for="movieDescription">Description: *</label>
                     <textarea type="text" id="movieDescription" class="form-control" required></textarea>
                 </div>
-                <div class="mb-3"><label for="movieYear">Year: </label>
-                    <input type="number" min="1888" id="movieYear" class="form-control" required>
+                <div class="mb-3 col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label for="movieDirector">Director: </label>
+                        <input type="text" id="movieDirector" class="form-control" required>
+                            </div>
+                        <div class="col-md-3">
+                            <label for="movieBudget">Budget ($): </label>
+                            <input type="text" id="movieBudget" class="form-control" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="movieBoxOffice">Box Office ($): </label>
+                            <input type="text" id="movieBoxOffice" class="form-control" required>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3"><label for="movieBoxOffice">Box Office ($): </label>
-                    <input type="text" id="movieBoxOffice" class="form-control" required>
-                </div>
-                <div class="mb-3"><label for="movieDirector">Director: </label>
-                    <input type="text" id="movieDirector" class="form-control" required>
-                </div>
-                <div class="mb-3"><label for="movieBudget">Budget ($): </label>
-                    <input type="text" id="movieBudget" class="form-control" required>
-                </div>
-                <div class="mb-3"><label for="actor-name">Actor Name: </label>
+                <div class="mb-3 col-md-12">
+                    <div class="row">
+                <div class="col-md-6"><label for="actor-name">Actor Name: </label>
                     <input type="text" id="actor-name" class="form-control" required>
                 </div>
-                <div class="mb-3"><label for="actor-role">Role:</label>
+                <div class="col-md-6"><label for="actor-role">Role:</label>
                     <input type="text" id="actor-role" class="form-control" required>
                 </div>
-                <button type="button" id="addActorBtn" class="btn btn-secondary mt-2">Add Another Actor</button>
+                </div>
+                </div>
                 <br>
                 <div id="successActor" class="success-message">Sample movie added successfully!</div>
                 <br>
@@ -80,14 +66,6 @@
         <div id="moviesTableBody"></div>
     </div>
 </main>
-<footer class="bg-dark text-white p-3 mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-9 text-center">
-            <p>&copy; 2024 Greatest Movies. All rights reserved</p>
-            <p>Celebrating the best films in cinema history</p>
-        </div>
-    </div>
-</footer>
 <script src="script.js"></script>
 </body>
 </html>
