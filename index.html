@@ -18,41 +18,66 @@
                 <h3 class="card-title"> Add New Movie</h3>
                 <div class="mb-3 col-md-12">
                     <div class="row">
-                        <div class="col-md-8"><label for="movieTitle" class="form-label">Title: *</label>
-                            <input type="text" id="movieTitle" class="form-control" required>
+                        <div class="col-md-8">
+                            <label for="movieTitle" class="form-label">Title: *</label>
+                            <input type="text" id="movieTitle" class="form-control">
+                            <div class="invalid-feedback">
+                                Title must be at least 3 characters long.
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <label for="movieYear">Release Year: *</label>
-                            <input type="number" id="movieYear" class="form-control" required>
+                            <input type="number" id="movieYear" class="form-control">
+                            <div class="invalid-feedback">
+                                Year must be between 1880 and <span id="currentYear"></span> inclusive.
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="mb-3"><label for="movieDescription">Description: *</label>
-                    <textarea type="text" id="movieDescription" class="form-control" required></textarea>
+                    <textarea type="text" id="movieDescription" class="form-control"></textarea>
+                    <div class="form-text">
+                        10-500 characters
+                    </div>
+                    <div class="invalid-feedback">
+                        Description must be between 10 and 500 characters inclusive.
+                    </div>
                 </div>
                 <div class="mb-3 col-md-12">
                     <div class="row">
                         <div class="col-md-6">
                             <label for="movieDirector">Director: </label>
-                            <input type="text" id="movieDirector" class="form-control" required>
+                            <input type="text" id="movieDirector" class="form-control">
+                            <div class="invalid-feedback">
+                                Director must be at least 3 characters long.
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <label for="movieBudget">Budget ($): </label>
-                            <input type="text" id="movieBudget" class="form-control" required>
+                            <input type="text" id="movieBudget" class="form-control">
+                            <div class="invalid-feedback">
+                                Budget must be between $1M and $1B inclusive.
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <label for="movieBoxOffice">Box Office ($): </label>
-                            <input type="text" id="movieBoxOffice" class="form-control" required>
+                            <input type="text" id="movieBoxOffice" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="mb-3 col-md-12">
                     <div class="row">
                         <div class="col-md-6"><label for="actor-name">Actor Name: </label>
-                            <input type="text" id="actor-name" class="form-control" required>
+                            <input type="text" id="actor-name" class="form-control">
+                            <div class="invalid-feedback">
+                                Lead Actor must be at least 2 words and more than 3 characters long.
+                            </div>
                         </div>
                         <div class="col-md-6"><label for="actor-role">Role:</label>
-                            <input type="text" id="actor-role" class="form-control" required>
+                            <input type="text" id="actor-role" class="form-control">
+                            <div class="invalid-feedback">
+                                Role must be at least 3 characters long.
+                            </div>
                         </div>
                     </div>
                 </div>
