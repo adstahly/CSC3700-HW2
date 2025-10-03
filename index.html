@@ -81,12 +81,11 @@
                         </div>
                     </div>
                 </div>
-                <br>
-                <div id="successActor" class="success-message">Sample movie added successfully!</div>
-                <br>
+                <div class="d-flex justify-content-between">
+                <button type="reset" class="btn btn-outline-secondary"> Clear Form</button>
                 <button type="submit" class="btn btn-primary mt-0">Add Movie</button>
+                </div>
             </form>
-            <div id="successMessage" class="success-message">Sample movie added successfully!</div>
         </div>
         <div class="card mt-3">
             <h3 class="card-header"> Filter Movies by Director</h3>
@@ -103,7 +102,7 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <button type="reset"> Clear Filter</button>
+                            <button type="reset" id="filterReset"> Clear Filter</button>
                         </div>
                     </div>
                 </div>
@@ -112,6 +111,7 @@
         <div class="card mt-3">
             <h3 class="card-header"> Current Movies Database</h3>
             <div class="card-body">
+                <div id="successMessage" class="alert alert-info success-message">Movie added successfully!</div>
                 <table class="table table-striped">
                     <thead class="table-dark">
                     <tr>

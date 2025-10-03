@@ -13,20 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentYear = now.getFullYear();
     const movieForm = document.getElementById('addMovieForm');
     movieForm.addEventListener('submit', handleMovieSubmit);
+    const clearFilterbtn = document.getElementById('clearFilter');
+    const clearFormbtn = document.getElementById('clearForm');
     const successMessage = document.getElementById('successMessage');
+    const directorSelect = document.getElementById('directorSelect');
+    const body = document.getElementById("moviesTableBody");
 
     function handleMovieSubmit(e) {
         e.preventDefault();
-        createMovie();
-        displayMovies();
-        successMessage.style.display = 'block';
-        movieForm.reset();
-    }
 
-
-    let moviesData = [];
-    function createMovie() {
-        let actors = [];
         const title = document.getElementById('movieTitle');
         const director = document.getElementById('movieDirector');
         const budget = document.getElementById('movieBudget');
@@ -35,27 +30,40 @@ document.addEventListener('DOMContentLoaded', () => {
         const year = document.getElementById('movieYear');
         const actorName = document.getElementById('actor-name');
         const actorRole = document.getElementById('actor-role');
-        //if (validateTitle(title) && validateYear(year)
-        //&& )
-        validateTitle(title)
-       validateYear(year);
-       validateDescription(description);
-       validateDirector(director);
-       validateBudget(budget);
-       validateLeadActor(actorName);
-       validateRole(actorRole);
-        const newMovie = {
-            id: id,
-            title: title,
-            description: description,
-            year: year,
-            boxOffice: boxOffice,
-            director: director,
-            budget: budget,
-            actors: actors,
+
+        const isTitleValid = validateTitle(title)
+        const isYearValid = validateYear(year)
+        const isDescriptionValid = validateDescription(description)
+        const isDirectorValid = validateDirector(director)
+        const isBudgetValid = validateBudget(budget)
+        const isActorValid = validateActor(actorName)
+        const isRoleValid = validateRole(actorRole)
+
+        if (isTitleValid && isYearValid
+            && isDescriptionValid && isDirectorValid && isBudgetValid
+            && isActorValid && isRoleValid) {
+
+            const newMovie = {
+                id: Date.now(),
+                title: title.value,
+                description: description.value,
+                year: parseInt(year.value),
+                boxOffice: boxOffice.value,
+                director: director.value,
+                budget: budget.value,
+                actors: [{name: actorName.value, role: actorRole.value}],
+            }
+            moviesData.push(newMovie);
+            displayMovie(newMovie)
+            successMessage.style.display = 'block';
+            movieForm.reset();
+        } else {
+            successMessage.style.display = 'none';
         }
-        moviesData.push(newMovie);
+
+
     }
+    let moviesData = [];
     function validateTitle(title) {
         if (title.value.length < TITLELENGTH) {
             title.classList.add('is-invalid');
@@ -96,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function validateDirector(director) {
-        if (director.value <= DIRECTORMIN) {
+        if (director.value.length >= DIRECTORMIN) {
             director.classList.remove('is-invalid');
             return true;
         } else {
@@ -105,8 +113,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    //title.addEventListener("input", validateTitle);
-    //year.addEventListener("input", validateYear);
+    function validateBudget(budget) {
+        let budgetFloat = parseFloat(budget.value)
+        if (budgetFloat >= BUDGETMIN && budgetFloat <= BUDGETMAX) {
+            budget.classList.remove('is-invalid');
+            return true;
+        } else {
+            budget.classList.add('is-invalid');
+            return false;
+        }
+    }
+
+    function validateActor(leadActor) {
+        if (leadActor.value.length > ACTORCHARMIN && leadActor.value.split(' ').length <= ACTORWORDMIN) {
+            console.log(leadActor.value);
+            leadActor.classList.remove('is-invalid');
+            return true;
+        } else {
+            leadActor.classList.add('is-invalid');
+            return false;
+        }
+    }
+
+    function validateRole(role) {
+        if (role.value.length >= ROLEMIN) {
+            role.classList.remove('is-invalid');
+            return true;
+        } else {
+            role.classList.add('is-invalid');
+            return false;
+        }
+    }
+
+    function populateDirectorDropdown(){
+        directorSelect.innerHTML = '<option value="default"> Show All Directors</option>';
+        let uniqueDirectors = [];
+        moviesData.forEach((movie) => {
+            for (const director of uniqueDirectors) {
+                if (movie.director === director) {
+                    return;
+                }
+            }
+            uniqueDirectors.push(movie.director);
+            directorSelect.innerHTML += `<option value="${movie.director}"> ${movie.director} </option>`;
+        })
+    }
+    directorSelect.addEventListener('change', () => {
+        const currentDirector = directorSelect.value;
+        const filteredMovies = moviesData.filter((movie) => (movie.director === currentDirector));
+        if (currentDirector === "default") {
+            displayMovies()
+        } else {
+            body.innerHTML = ''
+            filteredMovies.forEach(movie => {
+                displayMovie(movie);
+            })
+        }
+    });
+
+
+
 
     const PORT = 3000;
     const BASE_URL = `http://localhost:${PORT}/movies`;
@@ -139,18 +205,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             moviesData = await response.json();
             displayMovies()
+            populateDirectorDropdown()
 
         } catch (error) {
 
         }
     }
-
-    function displayMovies() {
-        let body = document.getElementById("moviesTableBody");
-        body.innerHTML = '';
-        moviesData.forEach((movie) => {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
+    function displayMovie(movie) {
+        console.log(movie);
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
             <td>${movie.title}</td> 
             <td>${movie.director}</td>
             <td>${movie.year}</td> 
@@ -163,19 +227,22 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="btn btn-danger btn-sm delete-details-btn">
             Delete </button> </td>`;
 
-
-            const detailsButton = tr.querySelector('.view-details-btn');
-            detailsButton.addEventListener('click', () => {
-                sessionStorage.setItem('selectedMovie', JSON.stringify(movie));
-                window.location.href = `movie_details.html`;
-            });
-            const deleteButton = tr.querySelector('.delete-details-btn');
-            deleteButton.addEventListener('click', () => {
-                deleteMovie(movie.id);
-            });
-            body.appendChild(tr);
+        const detailsButton = tr.querySelector('.view-details-btn');
+        detailsButton.addEventListener('click', () => {
+            sessionStorage.setItem('selectedMovie', JSON.stringify(movie));
+            window.location.href = `movie_details.html`;
         });
+
+        const deleteButton = tr.querySelector('.delete-details-btn');
+        deleteButton.addEventListener('click', () => {
+            deleteMovie(movie.id);
+        });
+        body.appendChild(tr);
     }
+
+    function displayMovies() {
+        body.innerHTML = '';
+        moviesData.forEach((movie) => displayMovie(movie));}
 
     fetchMovies();
 });
