@@ -1,158 +1,316 @@
 {
-  "movies":
-    [
-      {
-        "id": 1,
-        "title": "Gladiator",
-        "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family.",
-        "year": 2000,
-        "boxOffice": "460.5M",
-        "director": "Ridley Scott",
-        "budget": "103M",
-        "actors": [
-          {"name": "Russell Crowe", "role": "Maximus Decimus Meridius"},
-          {"name": "Joaquin Phoenix", "role": "Commodus"},
-          {"name": "Connie Nielsen", "role": "Lucilla"},
-          {"name": "Oliver Reed", "role": "Proximo"}
-        ]
-      },
-      {
-        "id": 2,
-        "title": "The Lord of the Rings: The Return of the King",
-        "description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam.",
-        "year": 2003,
-        "boxOffice": "1.146B",
-        "director": "Peter Jackson",
-        "budget": "94M",
-        "actors": [
-          {"name": "Elijah Wood", "role": "Frodo Baggins"},
-          {"name": "Viggo Mortensen", "role": "Aragorn"},
-          {"name": "Ian McKellen", "role": "Gandalf"},
-          {"name": "Orlando Bloom", "role": "Legolas"},
-          {"name": "Sean Bean", "role": "Boromir"}
-        ]
-      },
-      {
-        "id": 3,
-        "title": "Avengers: Endgame",
-        "description": "After the devastating events of Infinity War, the Avengers assemble once more to reverse Thanos' actions.",
-        "year": 2019,
-        "boxOffice": "2.798B",
-        "director": "Anthony and Joe Russo",
-        "budget": "356M",
-        "actors": [
-          {"name": "Robert Downey Jr.", "role": "Tony Stark / Iron Man"},
-          {"name": "Chris Evans", "role": "Steve Rogers / Captain America"},
-          {"name": "Mark Ruffalo", "role": "Bruce Banner / Hulk"},
-          {"name": "Chris Hemsworth", "role": "Thor"},
-          {"name": "Scarlett Johansson", "role": "Natasha Romanoff / Black Widow"}
-        ]
-      },
-      {
-        "id": 4,
-        "title": "The Godfather",
-        "description": "The aging patriarch of an organized crime dynasty transfers control to his reluctant son.",
-        "year": 1972,
-        "boxOffice": "246.1M",
-        "director": "Francis Ford Coppola",
-        "budget": "6M",
-        "actors": [
-          {"name": "Marlon Brando", "role": "Vito Corleone"},
-          {"name": "Al Pacino", "role": "Michael Corleone"},
-          {"name": "James Caan", "role": "Santino 'Sonny' Corleone"},
-          {"name": "Robert Duvall", "role": "Tom Hagen"}
-        ]
-      },
-      {
-        "id": 5,
-        "title": "Pulp Fiction",
-        "description": "The lives of two mob hitmen, a boxer, and others intertwine in four tales of violence and redemption.",
-        "year": 1994,
-        "boxOffice": "214.2M",
-        "director": "Quentin Tarantino",
-        "budget": "8M",
-        "actors": [
-          {"name": "John Travolta", "role": "Vincent Vega"},
-          {"name": "Samuel L. Jackson", "role": "Jules Winnfield"},
-          {"name": "Uma Thurman", "role": "Mia Wallace"},
-          {"name": "Bruce Willis", "role": "Butch Coolidge"}
-        ]
-      },
-      {
-        "id": 6,
-        "title": "The Dark Knight",
-        "description": "Batman faces his greatest psychological and physical tests when the Joker wreaks havoc on Gotham City.",
-        "year": 2008,
-        "boxOffice": "1.006B",
-        "director": "Christopher Nolan",
-        "budget": "185M",
-        "actors": [
-          {"name": "Christian Bale", "role": "Bruce Wayne / Batman"},
-          {"name": "Heath Ledger", "role": "The Joker"},
-          {"name": "Aaron Eckhart", "role": "Harvey Dent / Two-Face"},
-          {"name": "Michael Caine", "role": "Alfred Pennyworth"}
-        ]
-      },
-      {
-        "id": 7,
-        "title": "Forrest Gump",
-        "description": "A man with low IQ accomplishes great things and influences several defining historical events.",
-        "year": 1994,
-        "boxOffice": "678.2M",
-        "director": "Robert Zemeckis",
-        "budget": "55M",
-        "actors": [
-          {"name": "Tom Hanks", "role": "Forrest Gump"},
-          {"name": "Robin Wright", "role": "Jenny Curran"},
-          {"name": "Gary Sinise", "role": "Lieutenant Dan Taylor"},
-          {"name": "Mykelti Williamson", "role": "Bubba Blue"}
-        ]
-      },
-      {
-        "id": 8,
-        "title": "The Lord of the Rings: The Fellowship of the Ring",
-        "description": "A meek Hobbit and eight companions set out on a journey to destroy the One Ring and the Dark Lord Sauron.",
-        "year": 2001,
-        "boxOffice": "898.2M",
-        "director": "Peter Jackson",
-        "budget": "93M",
-        "actors": [
-          {"name": "Elijah Wood", "role": "Frodo Baggins"},
-          {"name": "Ian McKellen", "role": "Gandalf"},
-          {"name": "Viggo Mortensen", "role": "Aragorn"},
-          {"name": "Sean Astin", "role": "Samwise Gamgee"},
-          {"name": "Orlando Bloom", "role": "Legolas"}
-        ]
-      },
-      {
-        "id": 9,
-        "title": "King Kong",
-        "description": "A greedy film producer assembles a team of moviemakers and sets out for the infamous Skull Island.",
-        "year": 2005,
-        "boxOffice": "562.4M",
-        "director": "Peter Jackson",
-        "budget": "207M",
-        "actors": [
-          {"name": "Naomi Watts", "role": "Ann Darrow"},
-          {"name": "Jack Black", "role": "Carl Denham"},
-          {"name": "Adrien Brody", "role": "Jack Driscoll"},
-          {"name": "Thomas Kretschmann", "role": "Captain Englehorn"}
-        ]
-      },
-      {
-        "id": 10,
-        "title": "Alien",
-        "description": "The crew of a commercial spacecraft encounters a deadly lifeform after investigating a mysterious transmission.",
-        "year": 1979,
-        "boxOffice": "106.3M",
-        "director": "Ridley Scott",
-        "budget": "11M",
-        "actors": [
-          {"name": "Sigourney Weaver", "role": "Ellen Ripley"},
-          {"name": "Tom Skerritt", "role": "Dallas"},
-          {"name": "John Hurt", "role": "Kane"},
-          {"name": "Ian Holm", "role": "Ash"}
-        ]
-      }
-    ]
+  "movies": [
+    {
+      "id": 1,
+      "title": "Gladiator",
+      "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family.",
+      "year": 2000,
+      "boxOffice": "460.5M",
+      "director": "Ridley Scott",
+      "budget": "103M",
+      "actors": [
+        {
+          "name": "Russell Crowe",
+          "role": "Maximus Decimus Meridius"
+        },
+        {
+          "name": "Joaquin Phoenix",
+          "role": "Commodus"
+        },
+        {
+          "name": "Connie Nielsen",
+          "role": "Lucilla"
+        },
+        {
+          "name": "Oliver Reed",
+          "role": "Proximo"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "The Lord of the Rings: The Return of the King",
+      "description": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam.",
+      "year": 2003,
+      "boxOffice": "1.146B",
+      "director": "Peter Jackson",
+      "budget": "94M",
+      "actors": [
+        {
+          "name": "Elijah Wood",
+          "role": "Frodo Baggins"
+        },
+        {
+          "name": "Viggo Mortensen",
+          "role": "Aragorn"
+        },
+        {
+          "name": "Ian McKellen",
+          "role": "Gandalf"
+        },
+        {
+          "name": "Orlando Bloom",
+          "role": "Legolas"
+        },
+        {
+          "name": "Sean Bean",
+          "role": "Boromir"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Avengers: Endgame",
+      "description": "After the devastating events of Infinity War, the Avengers assemble once more to reverse Thanos' actions.",
+      "year": 2019,
+      "boxOffice": "2.798B",
+      "director": "Anthony and Joe Russo",
+      "budget": "356M",
+      "actors": [
+        {
+          "name": "Robert Downey Jr.",
+          "role": "Tony Stark / Iron Man"
+        },
+        {
+          "name": "Chris Evans",
+          "role": "Steve Rogers / Captain America"
+        },
+        {
+          "name": "Mark Ruffalo",
+          "role": "Bruce Banner / Hulk"
+        },
+        {
+          "name": "Chris Hemsworth",
+          "role": "Thor"
+        },
+        {
+          "name": "Scarlett Johansson",
+          "role": "Natasha Romanoff / Black Widow"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "The Godfather",
+      "description": "The aging patriarch of an organized crime dynasty transfers control to his reluctant son.",
+      "year": 1972,
+      "boxOffice": "246.1M",
+      "director": "Francis Ford Coppola",
+      "budget": "6M",
+      "actors": [
+        {
+          "name": "Marlon Brando",
+          "role": "Vito Corleone"
+        },
+        {
+          "name": "Al Pacino",
+          "role": "Michael Corleone"
+        },
+        {
+          "name": "James Caan",
+          "role": "Santino 'Sonny' Corleone"
+        },
+        {
+          "name": "Robert Duvall",
+          "role": "Tom Hagen"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Pulp Fiction",
+      "description": "The lives of two mob hitmen, a boxer, and others intertwine in four tales of violence and redemption.",
+      "year": 1994,
+      "boxOffice": "214.2M",
+      "director": "Quentin Tarantino",
+      "budget": "8M",
+      "actors": [
+        {
+          "name": "John Travolta",
+          "role": "Vincent Vega"
+        },
+        {
+          "name": "Samuel L. Jackson",
+          "role": "Jules Winnfield"
+        },
+        {
+          "name": "Uma Thurman",
+          "role": "Mia Wallace"
+        },
+        {
+          "name": "Bruce Willis",
+          "role": "Butch Coolidge"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "The Dark Knight",
+      "description": "Batman faces his greatest psychological and physical tests when the Joker wreaks havoc on Gotham City.",
+      "year": 2008,
+      "boxOffice": "1.006B",
+      "director": "Christopher Nolan",
+      "budget": "185M",
+      "actors": [
+        {
+          "name": "Christian Bale",
+          "role": "Bruce Wayne / Batman"
+        },
+        {
+          "name": "Heath Ledger",
+          "role": "The Joker"
+        },
+        {
+          "name": "Aaron Eckhart",
+          "role": "Harvey Dent / Two-Face"
+        },
+        {
+          "name": "Michael Caine",
+          "role": "Alfred Pennyworth"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Forrest Gump",
+      "description": "A man with low IQ accomplishes great things and influences several defining historical events.",
+      "year": 1994,
+      "boxOffice": "678.2M",
+      "director": "Robert Zemeckis",
+      "budget": "55M",
+      "actors": [
+        {
+          "name": "Tom Hanks",
+          "role": "Forrest Gump"
+        },
+        {
+          "name": "Robin Wright",
+          "role": "Jenny Curran"
+        },
+        {
+          "name": "Gary Sinise",
+          "role": "Lieutenant Dan Taylor"
+        },
+        {
+          "name": "Mykelti Williamson",
+          "role": "Bubba Blue"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "description": "A meek Hobbit and eight companions set out on a journey to destroy the One Ring and the Dark Lord Sauron.",
+      "year": 2001,
+      "boxOffice": "898.2M",
+      "director": "Peter Jackson",
+      "budget": "93M",
+      "actors": [
+        {
+          "name": "Elijah Wood",
+          "role": "Frodo Baggins"
+        },
+        {
+          "name": "Ian McKellen",
+          "role": "Gandalf"
+        },
+        {
+          "name": "Viggo Mortensen",
+          "role": "Aragorn"
+        },
+        {
+          "name": "Sean Astin",
+          "role": "Samwise Gamgee"
+        },
+        {
+          "name": "Orlando Bloom",
+          "role": "Legolas"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "King Kong",
+      "description": "A greedy film producer assembles a team of moviemakers and sets out for the infamous Skull Island.",
+      "year": 2005,
+      "boxOffice": "562.4M",
+      "director": "Peter Jackson",
+      "budget": "207M",
+      "actors": [
+        {
+          "name": "Naomi Watts",
+          "role": "Ann Darrow"
+        },
+        {
+          "name": "Jack Black",
+          "role": "Carl Denham"
+        },
+        {
+          "name": "Adrien Brody",
+          "role": "Jack Driscoll"
+        },
+        {
+          "name": "Thomas Kretschmann",
+          "role": "Captain Englehorn"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Alien",
+      "description": "The crew of a commercial spacecraft encounters a deadly lifeform after investigating a mysterious transmission.",
+      "year": 1979,
+      "boxOffice": "106.3M",
+      "director": "Ridley Scott",
+      "budget": "11M",
+      "actors": [
+        {
+          "name": "Sigourney Weaver",
+          "role": "Ellen Ripley"
+        },
+        {
+          "name": "Tom Skerritt",
+          "role": "Dallas"
+        },
+        {
+          "name": "John Hurt",
+          "role": "Kane"
+        },
+        {
+          "name": "Ian Holm",
+          "role": "Ash"
+        }
+      ]
+    },
+    {
+      "id": "1759528817761",
+      "title": "Hot Fuzz",
+      "description": "An overachieving London police sergeant is transferred to a village where the easygoing officers object to his fervor for regulations.",
+      "year": 2007,
+      "boxOffice": "100",
+      "director": "Edgar Wright",
+      "budget": "1",
+      "actors": [
+        {
+          "name": "Simon Pegg",
+          "role": "Nicholas Angel"
+        }
+      ]
+    },
+    {
+      "id": "1759531527399",
+      "title": "Hot Fuzz",
+      "description": "An overachieving London police sergeant is transferred to a village where the easygoing officers object to his fervor for regulations.",
+      "year": 2007,
+      "boxOffice": "9",
+      "director": "Edgar Wright",
+      "budget": "100",
+      "actors": [
+        {
+          "name": "Simon Pegg",
+          "role": "Nicholas Angel"
+        }
+      ]
+    }
+  ]
 }
