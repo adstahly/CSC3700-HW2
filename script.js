@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentYear = now.getFullYear();
     const movieForm = document.getElementById('addMovieForm');
     movieForm.addEventListener('submit', handleMovieSubmit);
-    const clearFilterbtn = document.getElementById('filterReset');
+    const directorForm = document.getElementById('directorForm');
     const successMessage = document.getElementById('successMessage');
     const directorSelect = document.getElementById('directorSelect');
     const body = document.getElementById("moviesTableBody");
@@ -57,20 +57,21 @@ document.addEventListener('DOMContentLoaded', () => {
             successMessage.style.display = 'none';
         }
     }
+
     let moviesData = [];
+
     function validateTitle(title) {
         if (title.value.length < TITLELENGTH) {
             title.classList.add('is-invalid');
             return false;
-        }
-        else {
+        } else {
             title.classList.remove('is-invalid')
             return true;
         }
 
     }
 
-    function displayCurrentYear(){
+    function displayCurrentYear() {
         let currentYearElement = document.getElementById('currentYear');
         currentYearElement.innerText = currentYear.toString();
     }
@@ -80,8 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (parseInt(year.value) >= YEARMIN && parseInt(year.value) <= currentYear) {
             year.classList.remove('is-invalid');
             return true;
-        }
-        else {
+        } else {
             year.classList.add('is-invalid');
             return false;
         }
@@ -109,7 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function validateBudget(budget) {
         let budgetFloat = parseFloat(budget.value)
-        if (budgetFloat >= BUDGETMIN && budgetFloat <= BUDGETMAX) {
+        if (budgetFloat >= BUDGETMIN && budgetFloat <= BUDGETMAX
+            && budget.value.endsWith("M")) {
             budget.classList.remove('is-invalid');
             return true;
         } else {
@@ -119,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function validateActor(leadActor) {
-        if (leadActor.value.length > ACTORCHARMIN && leadActor.value.split(' ').length <= ACTORWORDMIN) {
+        if (leadActor.value.length > ACTORCHARMIN && leadActor.value.split(' ').length >= ACTORWORDMIN) {
             leadActor.classList.remove('is-invalid');
             return true;
         } else {
@@ -140,13 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let uniqueDirectors = [];
 
-    function populateDirectorsDropdown(){
+    function populateDirectorsDropdown() {
         directorSelect.innerHTML = '<option value="default"> Show All Directors</option>';
         moviesData.forEach((movie) => {
-            populateDirectorsDropdown(movie);
+            populateDirectorDropdown(movie);
         })
     }
-    function populateDirectorDropdown(movie){
+
+    function populateDirectorDropdown(movie) {
         for (const director of uniqueDirectors) {
             if (movie.director === director) {
                 return;
@@ -155,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         uniqueDirectors.push(movie.director);
         directorSelect.innerHTML += `<option value="${movie.director}"> ${movie.director} </option>`;
     }
+
     directorSelect.addEventListener('change', () => {
         const currentDirector = directorSelect.value;
         const filteredMovies = moviesData.filter((movie) => (movie.director === currentDirector));
@@ -168,14 +171,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    clearFilterbtn.addEventListener('reset', () =>{
-        directorSelect.value = 'default';
-    })
+    directorForm.addEventListener('reset', () => displayMovies())
 
 
     const PORT = 3000;
     const BASE_URL = `http://localhost:${PORT}/movies`;
-    async function postMovie(movie){
+
+    async function postMovie(movie) {
         try {
             const response = await fetch(BASE_URL, {
                 method: 'POST',
@@ -189,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const postedMovie = await response.json();
             moviesData.push(postedMovie);
-            displayMovie(postedMovie);
+            displayMovies();
             populateDirectorDropdown(postedMovie);
             successMessage.style.display = 'block';
             movieForm.reset();
@@ -197,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
     }
+
     async function deleteMovie(id) {
         if (!confirm("Are you sure to want to delete id=" + id)) {
             return;
@@ -211,8 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`Failed to delete. Server responded with status: ${response.status}`);
             }
             alert("Delete Successful.")
-        }
-        catch (error) {
+        } catch (error) {
             alert("Delete Not Work");
         }
     }
@@ -232,6 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
     }
+
     function displayMovie(movie) {
         const tr = document.createElement("tr");
         tr.innerHTML = `
@@ -262,7 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayMovies() {
         body.innerHTML = '';
-        moviesData.forEach((movie) => displayMovie(movie));}
+        moviesData.forEach((movie) => displayMovie(movie));
+    }
 
     fetchMovies();
 });
