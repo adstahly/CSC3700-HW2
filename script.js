@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ACTORWORDMIN = 2;
     const ACTORCHARMIN = 3;
     const ROLEMIN = 3;
+
     const now = new Date();
     const currentYear = now.getFullYear();
     const movieForm = document.getElementById('addMovieForm');
@@ -17,18 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const successMessage = document.getElementById('successMessage');
     const directorSelect = document.getElementById('directorSelect');
     const body = document.getElementById("moviesTableBody");
-
+    const title = document.getElementById('movieTitle');
+    const director = document.getElementById('movieDirector');
+    const budget = document.getElementById('movieBudget');
+    const boxOffice = document.getElementById('movieBoxOffice');
+    const description = document.getElementById('movieDescription');
+    const year = document.getElementById('movieYear');
+    const actorName = document.getElementById('actor-name');
+    const actorRole = document.getElementById('actor-role');
     function handleMovieSubmit(e) {
         e.preventDefault();
 
-        const title = document.getElementById('movieTitle');
-        const director = document.getElementById('movieDirector');
-        const budget = document.getElementById('movieBudget');
-        const boxOffice = document.getElementById('movieBoxOffice');
-        const description = document.getElementById('movieDescription');
-        const year = document.getElementById('movieYear');
-        const actorName = document.getElementById('actor-name');
-        const actorRole = document.getElementById('actor-role');
+
 
         const isTitleValid = validateTitle(title)
         const isYearValid = validateYear(year)
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    let moviesData = [];
+
 
     function validateTitle(title) {
         if (title.value.length < TITLELENGTH) {
@@ -138,24 +139,15 @@ document.addEventListener('DOMContentLoaded', () => {
             return false;
         }
     }
-
-    let uniqueDirectors = [];
+    let moviesData = [];
 
     function populateDirectorsDropdown() {
-        directorSelect.innerHTML = '<option value="default"> Show All Directors</option>';
-        moviesData.forEach((movie) => {
-            populateDirectorDropdown(movie);
-        })
-    }
+        const uniqueDirectors = new Set(moviesData.map(movie => movie.director));
 
-    function populateDirectorDropdown(movie) {
-        for (const director of uniqueDirectors) {
-            if (movie.director === director) {
-                return;
-            }
-        }
-        uniqueDirectors.push(movie.director);
-        directorSelect.innerHTML += `<option value="${movie.director}"> ${movie.director} </option>`;
+        directorSelect.innerHTML = '<option value="default"> Show All Directors</option>';
+        uniqueDirectors.forEach((director) => {
+            directorSelect.innerHTML += `<option value="${director}"> ${director} </option>`;
+        })
     }
 
     directorSelect.addEventListener('change', () => {
@@ -192,11 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const postedMovie = await response.json();
             moviesData.push(postedMovie);
             displayMovies();
-            populateDirectorDropdown(postedMovie);
+            populateDirectorsDropdown();
             successMessage.style.display = 'block';
             movieForm.reset();
         } catch (error) {
-
+            console.log("Error Posting Movie ->", error);
         }
     }
 
@@ -215,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             alert("Delete Successful.")
         } catch (error) {
-            alert("Delete Not Work");
+            console.log("Error Deleting Movie ->", error);
         }
     }
 
@@ -231,14 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
             populateDirectorsDropdown()
 
         } catch (error) {
-
+            console.log("Error Fetching Movies ->", error);
         }
     }
 
     function displayMovie(movie) {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <td>${movie.title}</td> 
+            <td><strong>${movie.title}</strong></td> 
             <td>${movie.director}</td>
             <td>${movie.year}</td> 
             <td>${movie.boxOffice}</td>   
