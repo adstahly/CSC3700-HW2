@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${movie.boxOffice}</td>   
             <td>${movie.actors[0].name}</td>     
             <td>
-            <button class="btn btn-primary btn-sm view-details-btn">
+            <button class="btn btn-info btn-sm view-details-btn">
                         View Details
                     </button>
             <button class="btn btn-danger btn-sm delete-details-btn">
